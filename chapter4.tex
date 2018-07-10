@@ -1,0 +1,144 @@
+\subsection{Integral 1}
+\begin{align*}
+\int_0^{2-\sqrt{3}}\frac{\arctan(x)}{x}dx &= \frac{\pi}{12}\ln\left(2-\sqrt{3}\right) + \frac{2}{3}G
+\end{align*}
+where $G= \sum_{k=0}^\infty (-1)^k \frac{1}{(2k+1)^2}$ is the Catalan's constant.
+\begin{proof}
+Let $I$ denote the integral. Using Integration by parts, we can write 
+\begin{align*}
+I &= \left[ \ln(x)\arctan(x) \right]_0^{2-\sqrt{3}} - \int_0^{2-\sqrt{3}}\frac{\ln (x)}{1+x^2}dx \\
+&= \frac{\pi}{12}\ln\left(2-\sqrt{3}\right)-\int_0^{\frac{\pi}{12}} \ln\left(\tan\theta\right) \; d\theta \quad\quad (x =\tan \theta) \tag{1}
+\end{align*}
+For $\theta \in \left(0,\frac{\pi}{2}\right)$, the following series expansions hold:
+\begin{align*}
+\log(2\sin \theta ) &= -\sum_{k=1}^\infty \frac{\cos(2k \theta)}{k} \\
+\log(2 \cos \theta) &= \sum_{k=1}^\infty (-1)^{k+1}\frac{\cos(2k\theta)}{k}
+\end{align*}
+Therefore, we have
+\begin{align*}
+I &= \frac{\pi}{12}\ln\left(2-\sqrt{3}\right) + 2\int_0^{\frac{\pi}{12}}\left(\sum_{k=0}^\infty \frac{\cos(2(2k+1)\theta)}{2k+1} \right) d\theta \\
+&= \frac{\pi}{12}\ln\left(2-\sqrt{3}\right) + 2\sum_{k=0}^\infty\frac{1}{2k+1}\int_0^{\frac{\pi}{12}} \cos(2(2k+1)\theta) \; d\theta 
+\end{align*}
+
+\begin{align*}
+&= \frac{\pi}{12}\ln\left(2-\sqrt{3}\right) + \sum_{k=0}^\infty\frac{\sin\left( (2k+1)\frac{\pi}{6}\right)}{(2k+1)^2}  \\
+&=  \frac{\pi}{12}\ln\left(2-\sqrt{3}\right) +\frac{1}{2}\left( \sum_{k=0}^\infty \frac{(-1)^k}{(2k+1)^2}+ \sum_{k=0}^\infty \frac{(-1)^k}{(6k+3)^2}\right) + \sum_{k=0}^\infty \frac{(-1)^k}{(6k+3)^2} \\
+&= \frac{\pi}{12}\ln\left(2-\sqrt{3}\right) +\frac{1}{2}\left(G+\frac{G}{9}\right)+\frac{G}{9} \\
+&= \frac{\pi}{12}\ln\left(2-\sqrt{3}\right) + \frac{2}{3}G
+\end{align*}
+\end{proof}
+
+\subsection{Integral 2}
+\begin{align*}
+\int_{\frac{\pi}{4}}^{\frac{\pi}{2}} \arctan\left(\sqrt{3}\tan\theta\right) \; d\theta -\int_{0}^{\frac{\pi}{6}} \arctan\left(\sqrt{3}\tan\theta\right) \; d\theta &= \frac{\pi^2}{12}
+\end{align*}
+\begin{proof}
+Let $I$ denote the expression on the left hand side of the equation. The substutution $\sqrt{3}\tan \theta = \tan \varphi$ transforms $I$ into
+\begin{align*}
+I &= \frac{\sqrt{3}}{2}\left( \int_{\frac{\pi}{3}}^{\frac{\pi}{2}}\frac{\varphi}{1+\frac{1}{2}\cos(2\varphi)}d\varphi -\int_{0}^{\frac{\pi}{4}}\frac{\varphi}{1+\frac{1}{2}\cos(2\varphi)}d\varphi \right)
+\end{align*}
+For $0\leq \phi \leq \frac{\pi}{2}$, consider the following generalized integral:
+\begin{align*}
+I(\phi) &= \frac{\sqrt{3}}{2}\int_{0}^{\phi}\frac{\varphi}{1+\frac{1}{2}\cos(2\varphi)}d\varphi 
+\end{align*}
+Using the series identity,
+\begin{align*}
+1+2\sum_{k=1}^\infty x^k \cos(k\theta) &= \frac{1-x^2}{1-2x\cos(\theta) + x^2} \quad |x|<1
+\end{align*}
+we easily deduce that
+\begin{align*}
+\frac{1}{1+\frac{1}{2}\cos(2\varphi)} &= \frac{2}{\sqrt{3}}\left(1+2\sum_{k=1}^\infty (-1)^k \rho^k \cos(2k\varphi) \right)
+\end{align*}
+where $\rho = 2-\sqrt{3}$. Therefore,
+\begin{align*}
+I(\phi) &= \int_0^\phi \varphi \left( 1+2\sum_{k=1}^\infty (-1)^k \rho^k \cos(2k\varphi) \right)d\varphi \\
+&= \frac{\phi^2}{2} + 2\sum_{k=1}^\infty (-1)^k \rho^k \int_0^\phi \varphi \cos(2k\varphi)\; d\varphi \\
+&= \frac{\phi^2}{2} + 2\sum_{k=1}^\infty (-1)^k \rho^k \left[\frac{\phi \sin(2k\phi)}{2k}-\frac{1-\cos(2k\phi)}{4k^2} \right]
+\end{align*} 
+\begin{align*}
+&= \frac{\phi^2}{2} -\phi \sum_{k=1}^\infty (-1)^{k+1}\frac{\rho^k\sin(2k\phi)}{k}+\frac{1}{2}\sum_{k=1}^\infty (-1)^{k+1} \frac{1-\cos(2k\phi)}{k^2}\rho^k \\
+&= \frac{\phi^2}{2} -\phi \arctan\left(\frac{\rho \sin(2\phi)}{1+\rho\cos(2\phi)} \right) +\frac{1}{2}\sum_{k=1}^\infty (-1)^{k+1} \frac{1-\cos(2k\phi)}{k^2}\rho^k \tag{1}
+\end{align*}
+We have used the following identity in the last step:
+\begin{align*}
+\sum_{k=1}^\infty (-1)^{k+1}\frac{x^k}{k}\sin(k\theta) &= \arctan\left(\frac{x \sin(\theta)}{1+x\cos(\theta)}\right) \quad |x| \leq 1
+\end{align*}
+Using equation (1), we get
+\begin{align*}
+I\left(\frac{\pi}{2}\right) &= \frac{\pi^2}{8}+\chi_2\left(\rho\right) \tag{2}\\
+I\left(\frac{\pi}{3}\right) &= \frac{\pi^2}{36}+\frac{1}{12}\text{Li}_2\left( -\rho^3\right) -\frac{3}{4}\text{Li}_2\left(-\rho \right) \tag{3}\\
+I\left(\frac{\pi}{4}\right) &= \frac{\pi^2}{96}+\frac{1}{2}\chi_2\left(\rho\right)-\frac{1}{4}\chi_2\left(\rho^2\right) \tag{4}
+\end{align*}
+Now, we have
+\begin{align*}
+I &= I\left(\frac{\pi}{2}\right)-I\left(\frac{\pi}{3}\right)-I\left(\frac{\pi}{4}\right) \\
+&= \frac{25\pi^2}{288} + \left[-\frac{1}{4}\text{Li}_2(\rho)+\frac{1}{2}\text{Li}_2(\rho^2)+\frac{1}{12}\text{Li}_2(\rho^3)-\frac{1}{16}\text{Li}_2(\rho^4)-\frac{1}{24}\text{Li}_2(\rho^6) \right]\tag{5}
+\end{align*}
+To complete the proof, we must prove that
+\begin{align*}
+-\frac{1}{4}\text{Li}_2(\rho)+\frac{1}{2}\text{Li}_2(\rho^2)+\frac{1}{12}\text{Li}_2(\rho^3)-\frac{1}{16}\text{Li}_2(\rho^4)-\frac{1}{24}\text{Li}_2(\rho^6) &= -\frac{\pi^2}{288} \tag{6}
+\end{align*}
+This can be done by using the following dilogarithm identites:
+\begin{align*}
+\text{Li}_2 \left(\tan a, \frac{\pi}{2}-2a \right) &= a^2 +\frac{3}{4}\text{Li}_2(\tan^2 a) -\frac{1}{8}\text{Li}_2(\tan^4 a) \\
+\text{Li}_2\left(x,\frac{\pi}{3}\right) &= \frac{1}{6} \text{Li}_2(-x^3) -\frac{1}{2}\text{Li}_2(-x)
+\end{align*}
+where the notation $\text{Li}_2(x,\theta)$ is used for the real part of $\text{Li}_2(xe^{i\theta})$.
+Substituting $a=\frac{\pi}{12}$ and $x=\tan\left(\frac{\pi}{12}\right)=2-\sqrt{3}$ gives:
+\begin{align*}
+\frac{1}{6}\text{Li}_2(-\rho^3)-\frac{1}{2}\text{Li}_2(-\rho) &= \frac{\pi^2}{144} + \frac{3}{4}\text{Li}_2(\rho^2)-\frac{1}{8}\text{Li}_2(\rho^4) \\
+\implies  \frac{1}{12}\text{Li}_2(\rho^6)-\frac{1}{6}\text{Li}_2(\rho^3) -\frac{1}{4}\text{Li}_2(\rho^2) +\frac{1}{2} \text{Li}_2(\rho)&= \frac{\pi^2}{144} + \frac{3}{4}\text{Li}_2(\rho^2)-\frac{1}{8}\text{Li}_2(\rho^4) \tag{7}
+\end{align*}
+Now, it is easy to check that equation (6) and (7) are equivalent.
+\end{proof}
+Another interesting identity, though not related to the problem above, is obtained using Hill's two-variable relation for the dilogarithm:
+\begin{align*}
+\text{Li}_2(xy) &= \text{Li}_2(x) + \text{Li}_2(y) + \text{Li}_2\left(-x\left(\frac{1-y}{1-x}\right) \right)+\text{Li}_2\left(-y\left(\frac{1-x}{1-y}\right)\right)+\frac{1}{2}\log^2\left(\frac{1-x}{1-y}\right)
+\end{align*}
+Substitute $x=-y = e^{-i\frac{\pi}{4}}\frac{\sqrt{3}-1}{\sqrt{2}}$. Then $\frac{1-x}{1+x}=ix = e^{i\frac{\pi}{4}}\frac{\sqrt{3}-1}{\sqrt{2}}$ and $ix^2 =\rho$.
+\begin{align*}
+\text{Li}_2(-x^2) &= \text{Li}_2(x) + \text{Li}_2(-x) + \text{Li}_2(i)+\text{Li}_2(ix^2)+\frac{1}{2}\log^2\left(ix\right) \\
+\implies \text{Li}_2(i\rho)&= \frac{1}{2}\text{Li}_2(-i\rho)+ \text{Li}_2(i) + \text{Li}_2(\rho) +\frac{1}{2}\log^2\left(e^{i\frac{\pi}{4}}\frac{\sqrt{3}-1}{\sqrt{2}} \right)
+\end{align*}
+Extracting the real part from the above equation gives:
+\begin{align*}
+\frac{\text{Li}_2(\rho^4)}{16}-\frac{\text{Li}_2(\rho^2)}{8} -\text{Li}_2(\rho) &= -\frac{5\pi^2}{96}+\frac{1}{8}\log^2(\rho) 
+\end{align*}
+\subsection{Integral 3}
+\begin{align*}
+ \int_{0}^{\infty} \ln \left(\frac{1+a \sin^{2} (bx)}{1-a \sin^{2} (bx)} \right) \frac{1}{x^{2}} \ dx &= \pi b \left( \sqrt{1+a} - \sqrt{1-a} \right)
+\end{align*}
+where $|a| < 1, \; b>0$.
+\begin{proof}
+We will make use of the following well known series identity:
+\begin{align*}
+\sum_{n=-\infty}^\infty \frac{1}{(x+n\pi)^2} = \frac{1}{\sin^2 (x)}
+\end{align*}
+Let $I$ denote the integral. Then,
+\begin{align*}
+I &= \frac{1}{2}\int_{-\infty}^\infty \ln \left(\frac{1+a \sin^{2} (bx)}{1-a \sin^{2} (bx)} \right)\frac{1}{x^2} dx \\
+&=  \frac{b}{2}\int_{-\infty}^\infty \ln \left(\frac{1+a \sin^{2} (t)}{1-a \sin^{2} (t)} \right)\frac{1}{t^2} dt \quad \quad (t=bx) \\
+&= \frac{b}{2}\sum_{n=-\infty}^\infty \int_{n\pi - \frac{\pi}{2}}^{n\pi + \frac{\pi}{2}}  \ln \left(\frac{1+a \sin^{2} (t)}{1-a \sin^{2} (t)} \right)\frac{1}{t^2} dt \\
+&= \frac{b}{2}\sum_{n=-\infty}^\infty \int_{-{\pi\over 2}}^{\pi \over 2} \ln \left(\frac{1+a \sin^{2} (t)}{1-a \sin^{2} (t)} \right)\frac{1}{(t+n\pi)^2} dt \\
+&= \frac{b}{2} \int_{-{\pi\over 2}}^{\pi\over 2} \ln \left(\frac{1+a \sin^{2} (t)}{1-a \sin^{2} (t)} \right)\left( \sum_{n=-\infty}^\infty \frac{1}{(t+n\pi)^2} \right) dt \\
+&=  \frac{b}{2} \int_{-{\pi\over 2}}^{\pi\over 2} \ln \left(\frac{1+a \sin^{2} (t)}{1-a \sin^{2} (t)} \right)\frac{1}{\sin^2(t)} dt \\
+&= b \int_0^{\pi\over 2} \ln \left(\frac{1+a \sin^{2} (t)}{1-a \sin^{2} (t)} \right)\frac{1}{\sin^2(t)} dt 
+\end{align*}
+\begin{align*}
+&= 2b \int_0^{\pi \over 2}\left(\sum_{k=0}^\infty \frac{a^{2k+1}\sin^{4k+2}(t)}{2k+1} \right)\frac{1}{\sin^2(t)} dt \\
+&= 2b\sum_{k=0}^\infty \frac{a^{2k+1}}{2k+1} \int_0^{\pi\over 2} \sin^{4k}(t)\; dt \\
+&= \pi b\sum_{k=0}^\infty \frac{a^{2k+1}}{(2k+1) 2^{4k}} \binom{4k}{2k} \\
+&= \pi b \left( \sqrt{1+a}-\sqrt{1-a}\right)
+\end{align*}\end{proof}
+A similar calculation shows that 
+\begin{align*}
+\int_{0}^{\infty} \log \left( \frac{1+a \sin bx}{1-a \sin bx} \right) \frac{dx}{x} = \pi \arcsin(a)
+\end{align*}
+where $|a|<1$ and $b>0$. Dividing the above by $a$ and integrating both sides yields the following identity:
+\begin{align*}
+\int_0^\infty \frac{\text{Li}_2\left(\frac{\sin x}{\sqrt{2}}\right)-\text{Li}_2\left(-\frac{\sin x}{\sqrt{2}}\right)}{x}dx &= \frac{\pi G}{2}+\frac{\pi^2 \ln(2)}{8}
+\end{align*}
+where $G$ is Catalan's constant. Another integral obtained using this technique is (refer section 3.0.2):
+\begin{align*}
+\int_0^\infty \frac{\arctan^2 (\sin^2 x)}{x^2} dx &= \pi \log\left(\frac{2+\sqrt{2}}{4}\right)\sqrt{\frac{\sqrt{2}+1}{2}}+\frac{\pi^2}{4} \sqrt{\frac{\sqrt{2}-1}{2}}
+\end{align*}

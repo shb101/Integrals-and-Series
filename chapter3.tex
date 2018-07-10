@@ -1,0 +1,66 @@
+\subsection{Integral 1}
+\begin{align*}
+\int_0^\infty \frac{\sin\left( x^2\right)\ln(x)}{x} \; dx = -\frac{\gamma \pi}{8}
+\end{align*}
+where $\gamma$ is the Euler's constant.
+\begin{proof}
+The substitution $t=x^2$ transforms the integral into
+\begin{align*}
+\int_0^\infty \frac{\sin\left(x^2\right)\ln(x)}{x}dx &= \frac{1}{4}\int_0^\infty \frac{\sin(t) \ln(t)}{t}dt \tag{1}
+\end{align*}
+Using the results of section 2.2.1, we can write
+\begin{align*}
+\int_0^\infty \frac{\sin(t)\ln(t)}{t}dt &= \lim_{s\to 0}\frac{d}{ds}\int_0^\infty x^{s-1} \sin(x)\; dx\\
+&= \lim_{s\to 0} \frac{d}{ds}\left[\sin\left(\frac{\pi s}{2}\right) \Gamma(s)\right] \\
+&= \lim_{s\to 0} \left[ \frac{\pi}{2}\cos\left(\frac{\pi s}{2}\right)\Gamma(s) + \sin\left(\frac{\pi s}{2}\right)\Gamma'(s)\right] \\
+&= \lim_{s\to 0} \left[ \frac{\pi}{2}\cos\left(\frac{\pi s}{2}\right)\left(\frac{1}{s}-\gamma+O(s) \right) + \sin\left(\frac{\pi s}{2}\right)\left(-\frac{1}{s^2}+\frac{6\gamma^2+\pi^2}{12}+O(s) \right) \right] \\
+&= \lim_{s\to 0} \left[-\frac{\pi \gamma}{2} + \left( \frac{\pi}{2}\cos\left(\frac{\pi s}{2}\right) \frac{1}{s} - \sin\left(\frac{\pi s}{2}\right)\frac{1}{s^2}\right) + O(s)\right]\\
+&= -\frac{\pi \gamma}{2} \tag{2}
+\end{align*}
+Plugging this into equation (1) gives the desired result.
+\end{proof}
+
+\subsection{Integral 2}
+\begin{align*}
+\int_0^{\pi\over 2} \frac{\arctan^2 (\sin^2 \theta)}{\sin^2 \theta}\, d\theta &= \pi \log\left( \frac{2+\sqrt{2}}{4}\right) \sqrt{\frac{\sqrt{2}+1}{2}}+\frac{\pi^2}{4}\sqrt{\frac{\sqrt{2}-1}{2}}
+\end{align*}
+\begin{proof}
+Let $I$ denote the integral. Then, using integration by parts we can write
+\begin{align*} I=\int_{0}^{\pi\over 2}\frac{\left(\arctan(\sin^2 x) \right)^2}{\sin^2 x}dx = 4\int_0^{\frac{\pi}{2}}\frac{\cos^2 x\arctan(\sin^2 x)}{1+\sin^4 x}dx \end{align*}
+
+The main idea of this evaluation is to use differentiation under the integral sign. Let us introduce the parameter $\alpha$: \begin{align*} f(\alpha)=\int_0^{\frac{\pi}{2}}\frac{\cos^2 x\arctan(\alpha \sin^2 x)}{1+\sin^4 x}dx \end{align*}
+Taking derivative inside the integral,
+\begin{align*}
+f'(\alpha) &= \int_0^{\pi\over 2}\frac{\cos^2 x}{1+\sin^4 x}\cdot\frac{\sin^2 x}{1+\alpha^2 \sin^4 x}dx \\
+&= \frac{1}{1-\alpha^2}\int_0^{\pi\over 2}\frac{\cos^2 x\sin^2 x}{1+\sin^4 x}dx-\frac{\alpha^2}{1-\alpha^2}\int_0^{\pi\over 2}\frac{\cos^2 x\sin^2 x}{1+\alpha^2 \sin^4 x}dx
+\end{align*}
+Let $g(\alpha)=\int_0^{\pi\over 2}\frac{\cos^2 x\sin^2 x}{1+\alpha^2 \sin^4 x}dx$. Then, 
+\begin{align*}I=4f(1)=4\int_0^1\frac{g(1)-\alpha^2 g(\alpha)}{1-\alpha^2}d\alpha \tag{1}\end{align*}
+%$g(\alpha)$ can be calculated as follows:
+\begin{align*}
+g(\alpha) &= \int_0^{\frac{\pi}{2}}\frac{\cos^2 x\sin^2 x}{1+\alpha^2 \sin^4 x}dx \\
+&= \int_0^\infty \frac{t^2}{\left(t^4(1+\alpha^2)+2t^2+1 \right)(t^2+1)}dt \quad (t=\tan x)\\
+&= -\frac{1}{\alpha^2}\int_0^\infty\frac{1}{1+t^2}dt+\frac{1}{\alpha^2}\int_0^\infty\frac{1+(1+\alpha^2)t^2}{(1+\alpha^2)t^4+2t^2+1}dt \\
+&= -\frac{\pi}{2\alpha^2}+\frac{\pi \sqrt{1+\sqrt{1+\alpha^2}}}{2\sqrt{2}\alpha^2}\tag{2}
+\end{align*}
+That last integral was evaluated using an application of the residue theorem. Substitute this into equation (1) to get
+\begin{align*}I=\pi\sqrt{2}\int_0^1\frac{\sqrt{1+\sqrt{2}}-\sqrt{1+\sqrt{1+\alpha^2}}}{1- \alpha ^2 }d\alpha \tag{3}\end{align*}
+Luckily, integral (3) has a nice elementary anti-derivative. \begin{align*}
+&\; \int \frac{\sqrt{1+\sqrt{2}}-\sqrt{1+\sqrt{1+\alpha^2}}}{1-\alpha^2}d\alpha \\ &= \sqrt{1+\sqrt{2}}\text{ arctanh}(\alpha) -\int \frac{\sqrt{1+\sqrt{1+\alpha^2}}}{1-\alpha^2} d\alpha \\
+&= \sqrt{1+\sqrt{2}}\text{ arctanh}(\alpha)-\int \frac{t\sqrt{1+t}}{(2-t^2)\sqrt{t^2-1}}dt\quad (t=\sqrt{1+\alpha^2}) \\
+&= \sqrt{1+\sqrt{2}}\text{ arctanh}(\alpha)-\int \frac{t}{(2-t^2)\sqrt{t-1}}dt \\
+&=\sqrt{1+\sqrt{2}}\text{ arctanh}(\alpha)- 2\int \frac{u^2+1}{2-(u^2+1)^2}du\quad (u=\sqrt{t-1}) \\
+&=\sqrt{1+\sqrt{2}}\text{ arctanh}(\alpha)- 2\int \frac{u^2+1}{(\sqrt{2}-1-u^2)(\sqrt{2}+1+u^2)}du \\
+&= \sqrt{1+\sqrt{2}}\text{ arctanh}(\alpha)-\int\frac{du}{\sqrt{2}-1-u^2}+\int\frac{du}{\sqrt{2}+1+u^2} \\
+&=\sqrt{1+\sqrt{2}}\text{ arctanh}(\alpha)-\sqrt{\sqrt{2}+1}\text{ arctanh}\left( u \sqrt{\sqrt{2}+1}\right)+\sqrt{\sqrt{2}-1}\arctan\left(u\sqrt{\sqrt{2}-1} \right) +C\\
+&= \sqrt{1+\sqrt{2}}\text{ arctanh}(\alpha)-\sqrt{\sqrt{2}+1}\text{ arctanh}\left( \sqrt{\sqrt{1+\alpha^2}-1} \sqrt{\sqrt{2}+1}\right)\\ &\quad +\sqrt{\sqrt{2} -1}\arctan\left(\sqrt{\sqrt{1+\alpha^2}-1}\sqrt{\sqrt{2}-1} \right) +C
+\end{align*}
+
+Therefore, the integral is equal to
+\begin{align*}
+I &= \pi \sqrt{2} \lim_{\alpha\to 1}\Bigg\{ \sqrt{1+\sqrt{2}}\text{ arctanh}(\alpha)-\sqrt{\sqrt{2}+1}\text{ arctanh}\left( \sqrt{\sqrt{1+\alpha^2}-1} \sqrt{\sqrt{2}+1}\right)\\ &\quad +\sqrt{\sqrt{2} -1}\arctan\left(\sqrt{\sqrt{1+\alpha^2}-1}\sqrt{\sqrt{2}-1} \right) \Bigg\} \\
+&= \pi\sqrt{2}\left\{\frac{\sqrt{\sqrt{2}+1}}{2}\log\left(\frac{\sqrt{2}+2}{4} \right) +\sqrt{\sqrt{2}-1}\arctan\left(\sqrt{2}-1 \right)\right\} \\
+&= \pi\sqrt{2}\left\{\frac{\sqrt{\sqrt{2}+1}}{2}\log\left(\frac{\sqrt{2}+2}{4} \right) +\frac{\pi}{8}\sqrt{\sqrt{2}-1}\right\} \\
+&= \pi \log\left( \frac{2+\sqrt{2}}{4}\right) \sqrt{\frac{\sqrt{2}+1}{2}}+\frac{\pi^2}{4}\sqrt{\frac{\sqrt{2}-1}{2}}
+\end{align*}
+\end{proof}

@@ -1,0 +1,19 @@
+\contentsline {chapter}{\numberline {1}Gamma and Beta integrals}{5}
+\contentsline {section}{\numberline {1.1}Beta Function}{5}
+\contentsline {subsection}{\numberline {1.1.1}Integral 1}{5}
+\contentsline {subsection}{\numberline {1.1.2}Integral 2}{6}
+\contentsline {chapter}{\numberline {2}Residue theorem based evaluation of real integrals}{7}
+\contentsline {section}{\numberline {2.1}Rectangular Contours}{7}
+\contentsline {subsection}{\numberline {2.1.1}Integral 1}{7}
+\contentsline {subsection}{\numberline {2.1.2}Integral 2}{8}
+\contentsline {section}{\numberline {2.2}Circular Contours}{9}
+\contentsline {subsection}{\numberline {2.2.1}Integrals 1, 2}{9}
+\contentsline {subsection}{\numberline {2.2.2}Integral 3}{11}
+\contentsline {subsection}{\numberline {2.2.3}Integral 4}{13}
+\contentsline {chapter}{\numberline {3}Differentiation under the integral sign}{15}
+\contentsline {subsection}{\numberline {3.0.1}Integral 1}{15}
+\contentsline {subsection}{\numberline {3.0.2}Integral 2}{16}
+\contentsline {chapter}{\numberline {4}Integral evaluations using series expansions}{19}
+\contentsline {subsection}{\numberline {4.0.1}Integral 1}{19}
+\contentsline {subsection}{\numberline {4.0.2}Integral 2}{20}
+\contentsline {subsection}{\numberline {4.0.3}Integral 3}{22}

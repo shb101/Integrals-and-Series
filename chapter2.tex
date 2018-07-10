@@ -1,0 +1,236 @@
+\section{Rectangular Contours}
+
+\subsection{Integral 1}
+\begin{align*}
+\int_{-\infty}^\infty \frac{e^x}{e^{2x}+e^{2a}}\frac{1}{x^2+\pi^2}dx = \frac{2\pi e^{-a}}{4a^2+\pi^2}-\frac{1}{1+e^{2a}}
+\end{align*}
+where $a\in \mathbb{R}$.
+\begin{proof}
+Let $\displaystyle f(z) = \frac{e^z}{(e^{2z}+e^{2a})z}$. Let $\Gamma$ be the positively oriented rectangle in the complex plane with vertices $R-i\pi$, $R+i\pi$, $-R+i\pi$ and $-R-i\pi$ where $R>|a|$. There are three first order poles of $f(z)$ lying inside $\Gamma$ at $z= 0, \frac{i\pi}{2}+a$ and $-\frac{i\pi}{2}+a$. Then, by the residue theorem, we have
+\begin{align*}
+\int_\Gamma f(z)\; dz &= 2\pi i \left( \mathop{\text{Res}}_{z=0} \; f(z) +  \mathop{\text{Res}}_{z=\frac{i\pi}{2}+a} \; f(z) +  \mathop{\text{Res}}_{z=-\frac{i\pi}{2}+a} \; f(z)\right) \\
+&= 2\pi i \left( \frac{1}{1+e^{2a}} - \frac{i e^{-a}}{2a+i\pi} + \frac{i e^{-a}}{2a-i\pi}\right) \\
+&= 2\pi i \left( \frac{1}{1+e^{2a}} - \frac{2\pi e^{-a}}{4a^2 +\pi^2}\right) \tag{1} 
+\end{align*}
+By change of variables,
+\begin{align*}
+ \int_\Gamma f(z) \; dz &= \int_{-R-i\pi}^{R-i\pi} f(z)\; dz + \int_{R-i\pi}^{R+i\pi} f(z)\; dz + \int_{R+i\pi}^{-R+i\pi} f(z)\; dz + \int_{-R+i\pi}^{-R-i\pi} f(z)\; dz \\
+&= \int_{-R}^{R} \left(f(x-i\pi)-f(x+i\pi) \right) dx + \int_{R-i\pi}^{R+i\pi} f(z)\; dz + \int_{-R+i\pi}^{-R-i\pi} f(z)\; dz \\
+&= -2\pi i \int_{-R}^{R} \frac{e^x}{e^{2x}+e^{2a}}\frac{1}{x^2+\pi^2} dx + \int_{R-i\pi}^{R+i\pi} f(z)\; dz + \int_{-R+i\pi}^{-R-i\pi} f(z)\; dz \tag{2}
+\end{align*}
+Note that
+\begin{align*}
+\left| \int_{R-i\pi}^{R+i\pi} f(z)\; dz\right| &= \left|\int_{-\pi}^\pi f(R+iy)\; dy \right| \\
+&\leq e^R \int_{-\pi}^\pi \frac{dy}{|iy+R|\cdot |e^{2iy+2R}+e^{2a}|}dy \\
+&\leq \frac{e^{-R}}{R} \int_{-\pi}^\pi \frac{dy}{|e^{2iy}+e^{2a-2R}|} \\
+&\leq \frac{e^{-R}}{R} \frac{2\pi}{|1-e^{2a-2R}|} \tag{3}
+\end{align*}Similarly,
+\begin{align*}
+\left|\int_{-R+i\pi}^{-R-i\pi} f(z)\; dz \right| \leq \frac{e^{-R}}{R}\frac{2\pi}{|e^{2a}-e^{-2R}|}\tag{4}
+\end{align*}
+From equations (3) and (4), we see that the vertical integrals tend to 0 as $R\to \infty$. Therefore, by equations (1) and (2):
+\begin{align*}
+\int_{-\infty}^\infty \frac{e^x}{e^{2x}+e^{2a}}\frac{1}{x^2+\pi^2}dx &= \frac{2\pi e^{-a}}{4a^2+\pi^2}-\frac{1}{1+e^{2a}}
+\end{align*}
+\end{proof}
+
+\subsection{Integral 2}
+\begin{align*}
+\int_{-\infty}^\infty \frac{e^{ia x}}{\cosh(\pi x)}dx &= \frac{1}{\cosh\left(\frac{a}{2}\right)}
+\end{align*}
+where $a > 0$.
+\begin{proof}
+For $k\in \{1,2,\cdots\}$, define $B_k$ as the positively oriented rectangle with vertices $\pm k$ and $\pm k + i\pi k$. Then, using the residue theorem:
+\begin{align*}
+\lim_{k\to \infty}\int_{B_k}\frac{e^{ia z}}{\cosh(\pi z)}dz &= 2\pi i \sum_{k=0}^\infty \mathop{\text{Res}}\limits_{z=\frac{(2k+1)i}{2}} \frac{e^{ia z}}{\cosh(\pi z)} \\
+&= 2\pi i \left(\frac{ e^{- {a\over 2}}}{\pi i}\sum_{k=0}^\infty (-1)^k e^{-ak}\right) \\
+&= \frac{1}{\cosh\left(\frac{a}{2}\right)}
+\end{align*}
+Since only the integral over the bottom side of the rectangle survives under the limit $k\to \infty$, we have
+\begin{align*}
+\int_{-\infty}^\infty \frac{e^{ia x}}{\cosh(\pi x)}dx =\lim_{k\to \infty}\int_{B_k}\frac{e^{ia z}}{\cosh(\pi z)}dz &= \frac{1}{\cosh\left(\frac{a}{2}\right)}
+\end{align*}
+\end{proof}
+\section{Circular Contours}
+\subsection{Integrals 1, 2}
+\begin{align*}
+\int_0^\infty x^{s-1} \sin(x) \; dx &= \begin{cases} \sin\left(\frac{\pi s}{2}\right)\Gamma(s) & s\in (-1,0)\cup (0,1) \\ \frac{\pi}{2} &  s=0 \end{cases}\\
+\int_0^\infty x^{s-1} \cos(x) \; dx &= \cos\left(\frac{\pi s}{2}\right)\Gamma(s) \quad 0<s < 1
+\end{align*}
+\begin{proof}
+Let $f(z) = z^{s-1} e^{iz}$ where $0<s<1$. The branch of the logarithm is chosen as $-\pi < \arg z \leq \pi$. The idea is to integrate $f(z)$ around the contour shown in Fig.~\ref{c1} and let $R\to \infty$ and $\epsilon\to 0^+$. $C_R$ and $C_\epsilon$ are quarter circles centered at $z=0$ and having radiuses $R$ and $\epsilon$, respectively. $C_\epsilon$ is used avoid the branch point at $z=0$. 
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+\draw (-1,0) -- (5,0) node[right] {Re $z$};
+\draw (0,-1) -- (0,5) node[above] {Im $z$};
+\draw[thick,->,>=stealth'] (4,0) arc(0:45:4);
+\draw[thick] (2.828,2.828) arc(45:90:4);
+\draw[thick,->,>=stealth'] (0,0.5) arc(90:45:0.5);
+\draw[thick] (0.353,0.353) arc(45:0:0.5);
+\draw[thick,->,>=stealth'] (0.5,0) -- (2,0);
+\draw[thick] (2,0) -- (4,0);
+\draw[thick,->,>=stealth'] (0,4) -- (0,2);
+\draw[thick] (0,2) -- (0,0.5);
+\draw (0,0) node[below left] {0} (4,0) node[below] {$R$} (0.5,0) node[below] {$\epsilon$}
+(0,0.5) node[left] {$i\epsilon $} (0,4) node[left] {$iR$} (0.35,0.35) node[above right] {$C_{\epsilon}$} (2.9,2.9) node[above right] {$C_R$};
+\filldraw[black] (0,0) circle[radius=2pt] ;
+\end{tikzpicture}
+\caption{Contour for section 2.2.1}
+\label{c1}
+\end{figure}
+Using Cauchy's theorem, we have
+\begin{align*}
+\int_\epsilon^R f(z) \; dz + \int_{C_R} f(z) \; dz + \int_{iR}^{i\epsilon} f(z) \; dz + \int_{C_\epsilon}f(z)\; dz &= 0 \quad \tag{1}
+\end{align*}
+Note that
+\begin{align*}
+\int_{iR}^{i\epsilon}f(z)\; dz &= -i \int_\epsilon^R f(iz)\; dz \quad \tag{2}
+\end{align*}
+Using Jordan's Lemma,
+\begin{align*}
+\left|\int_{C_R} f(z)\; dz\right| &= R^s \left| \int_0^{\frac{\pi}{2}} e^{i R e^{i\theta}} e^{i\theta s} \; d\theta\right| \\
+&\leq R^s \int_0^{\frac{\pi}{2}} \left| e^{i R e^{i\theta}} \right| \; d\theta \\
+&\leq R^s \int_0^{\frac{\pi}{2}} e^{-R \frac{2\theta}{\pi}}\; d\theta \\
+&= \frac{\pi}{2}R^{s-1} \left(1-e^{-R} \right)
+\end{align*}
+Therefore, 
+\begin{align*}
+\lim_{R\to \infty}\left|\int_{C_R} f(z)\; dz\right| &= 0 \tag{3}
+\end{align*}
+Similarly, we have
+\begin{align*}
+\left|\int_{C_\epsilon} f(z)\; dz\right| &\leq  \frac{\pi}{2}\epsilon^{s-1} \left(1-e^{-\epsilon} \right)\; \to 0 \quad \text{as} \quad \epsilon \to 0^+ \tag{4}
+\end{align*}
+Using equations (1), (2), (3) and (4), we can write
+\begin{align*}
+\int_0^\infty x^{s-1} e^{ix} \; dx &= i^s \int_0^\infty x^{s-1} e^{-x}\; dx \\
+&= \left(\cos\left(\frac{\pi s}{2}\right) + i \sin\left(\frac{\pi s}{2}\right) \right) \Gamma(s)
+\end{align*}
+Separating the real and imaginary parts yields,
+\begin{align*}
+\int_0^\infty x^{s-1} \sin(x) \; dx &= \sin\left(\frac{\pi s}{2}\right)\Gamma(s) \tag{5}\\
+\int_0^\infty x^{s-1} \cos(x) \; dx &= \cos\left(\frac{\pi s}{2}\right)\Gamma(s) \tag{6}
+\end{align*}
+where $0<s<1$. 
+Now, let us define $I:(-1,1) \to \mathbb{R}$ as $I(s) = \int_0^\infty x^{s-1} \sin(x) \; dx$. We have proven that $I(s)=\sin\left(\frac{\pi s}{2}\right)\Gamma(s)$ whenever $0<s<1$. 
+Consider the case when $-1<s<0$. Applying integration by parts and using equation (6) gives
+\begin{align*}
+I(s) &= \left[ \frac{x^s \sin(x)}{s} \right]_0^\infty - \frac{1}{s}\int_0^\infty x^s \cos(x) \; dx \\
+&= -\frac{1}{s} \int_0^\infty x^s \cos(x) \; dx \\
+&= -\frac{1}{s} \cos\left(\frac{\pi}{2}(s+1) \right)\Gamma(s+1) \\
+&=  \sin\left(\frac{\pi s}{2}\right)\Gamma(s)
+\end{align*}
+The case $s=0$ corresponds to the famous Dirichlet integral whose proof is well known.
+\begin{align*}
+I(0) &= \int_0^\infty \frac{\sin (x)}{x}dx = \frac{\pi}{2}
+\end{align*}
+Also, $I(s)$ is continuous at $s=0$ since
+\begin{align*}
+\lim_{s\to 0} \left[ \sin\left(\frac{\pi s}{2}\right)\Gamma(s) \right]&= \frac{\pi}{2}
+\end{align*}
+\end{proof}
+
+\subsection{Integral 3}
+For $n\in \mathbb{N}$,
+\begin{align*}
+\int_0^{\frac{\pi}{2}}\frac{\cos\left((2n-1)\arcsin\left(\frac{\sin x}{\sqrt{2}}\right) \right)}{\sqrt{1-\frac{\sin^2 x}{2}}}dx &= \frac{\sqrt{\pi}}{2}\sin\left(\frac{n\pi}{2}\right)\frac{\Gamma\left(\frac{n}{2} \right)}{\Gamma\left(\frac{n+1}{2}\right)}
+\end{align*}
+
+\begin{proof}
+Let $I$ denote the integral. We will start off with the substitution $\sin t = \frac{\sin x}{\sqrt{2}}$. This transforms the integral into:
+\begin{align*}
+I &= \sqrt{2}\int_0^{\frac{\pi}{4}}\frac{\cos\left((2n-1) t\right)}{\sqrt{1-2\sin^2 t}}dt = \sqrt{2}\int_0^{\frac{\pi}{4}}\frac{\cos\left((2n-1) t\right)}{\sqrt{\cos(2t)}}dt
+\end{align*}
+Furthermore, substituting $\theta = 2t$ and using the symmetry of the integral, we have
+\begin{align*}
+I &= \frac{1}{\sqrt{2}} \int_{0}^{\frac{\pi}{2}}\frac{\cos\left(\frac{2n-1}{2}\theta\right)}{\sqrt{\cos \theta}}d\theta \\ &= \frac{1}{2\sqrt{2}} \int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\frac{\cos\left(\frac{2n-1}{2}\theta\right)}{\sqrt{\cos \theta}}d\theta \\
+&= \frac{1}{2\sqrt{2}} \text{Re}\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\frac{\exp\left(\frac{2n-1}{2}i\theta\right)}{\sqrt{\cos \theta}}d\theta \tag{1}
+\end{align*}
+Now integrate the principal branch of $f(z) = \frac{z^{n-1}}{\sqrt{1+z^2}}$ around the following contour:
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+\draw (-0.75,0) -- (3.75,0) node[right] {Re $z$};
+\draw (0,-3.75) -- (0,3.75) node[above] {Im $z$};
+\draw[thick,->,>=stealth'] ([shift=(-84.261:3)]0,0) arc(-84.261:0:3);
+\draw[thick] ([shift=(0:3)]0,0) arc(0:84.261:3);
+\draw[thick] ([shift=(90:0.3)]0,-3) arc(90:5.73:0.3);
+%\draw[thick] ([shift=(30:0.3)]0,-3) arc(30:5.739:0.3);
+\draw[thick] ([shift=(-90:0.3)]0,3) arc(-90:-5.73:0.3);
+\draw[thick,->,>=stealth'] (0,2.7) -- (0,0);
+\draw[thick] (0,0) -- (0,-2.7);
+\filldraw[black] (0,3) circle[radius=2pt] node[left] {$+i$} (0,-3) circle[radius=2pt] node[left] {$-i$};
+\draw (3,0) node[above right] {$+1$} (0,0) node[below left] {$0$} (2.4,2.3) node[above] {$|z|=1$} (-2.9,);
+\end{tikzpicture}
+\end{figure}
+
+The contour has circular indents of radius $\epsilon$ around the branch points $+i$ and $-i$. It is easily seen that integrals along these indents tend to 0 as $\epsilon\to 0^+$. Then, using Cauchy's Theorem, we have
+\begin{align*}
+\int_{\left\{z\in \mathbb{C} :\;  |z|=1 , \;  -\frac{\pi}{2}<\arg z < \frac{\pi}{2} \right\}}\frac{z^{n-1}}{\sqrt{1+z^2}}dz &= \int_{-i}^i \frac{y^{n-1}}{\sqrt{1+y^2}}dy\\
+&= i^{n}\int_{-1}^1 \frac{y^{n-1}}{\sqrt{1-y^2}}dy \\
+&= \begin{cases}
+2 i^n \int_0^1 \frac{y^{n-1}}{\sqrt{1-y^2}}dy \quad & n\text{ odd}\\ 0 \quad & n\text{ even}
+\end{cases}\tag{2}
+\end{align*}
+On the other hand, note that
+\begin{align*}
+\int_{\left\{z\in \mathbb{C} :\;  |z|=1 , \;  -\frac{\pi}{2}<\arg z < \frac{\pi}{2} \right\}}\frac{z^{n-1}}{\sqrt{1+z^2}} dz &= i\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\frac{e^{in \theta}}{\sqrt{1+e^{2i\theta}}}d\theta \\
+&= i\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\frac{e^{\frac{2n-1}{2}i \theta}}{\sqrt{e^{i\theta}+e^{-i\theta}}}d\theta \\
+&= \frac{ i}{\sqrt{2}}\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}}\frac{e^{\frac{2n-1}{2}i \theta}}{\sqrt{\cos \theta}}d\theta \tag{3}
+\end{align*}
+Using equations (1), (2) and (3), we get
+\begin{align*}
+I &= \sin\left(\frac{n\pi}{2}\right)\int_0^1 \frac{y^{n-1}}{\sqrt{1-y^2}}dy \\
+&= \frac{1}{2}\sin\left(\frac{n\pi}{2}\right)\int_0^1 \frac{\xi^{\frac{n}{2}-1}}{\sqrt{1-\xi}}d\xi \quad (\xi = y^2)\\
+&= \frac{\sqrt{\pi}}{2}\sin\left(\frac{n\pi}{2}\right)\frac{\Gamma\left(\frac{n}{2} \right)}{\Gamma\left(\frac{n+1}{2}\right)}
+\end{align*}
+\end{proof}
+\newpage
+\subsection{Integral 4}
+\begin{align*}
+\int_0^\infty \frac{\sin(\ln x)}{x^2+4}dx &= \frac{\pi \sin\left(\ln 2\right)}{4\cosh\left(\frac{\pi}{2}\right)}
+\end{align*}
+
+\begin{proof}
+Consider the function $f(z) = \frac{e^{i\log z}}{4+z^2}$ where the branch of the logarithm corresponds to $-\pi < \arg z \leq \pi$. We will integrate $f(z)$ around the following ``key-hole" contour:
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\draw (-3.75,0) -- (3.75,0) node[right] {Re $z$};
+\draw (0,-3.75) -- (0,3.75) node[above] {Im $z$};
+\draw[thick,->,>=stealth'] ([shift=(-175:3)]0,0) arc(-175:45:3);
+\draw[thick] ([shift=(45:3)]0,0) arc(45:175:3);
+\draw[thick,->,>=stealth'] (-3,0.261) -- (-1.5,0.261);
+\draw[thick] (-1.5,0.261) -- (0,0.261);
+\draw[thick,->,>=stealth'] (0,-0.261) -- (-1.5,-0.261);
+\draw[thick] (-1.5,-0.261) -- (-3,-0.261);
+\draw[thick] ([shift=(-90:0.261)]0,0) arc(-90:90:0.261);
+\filldraw[black] (0,0) circle[radius=2pt] (0,1.5) circle[radius=2pt] node[left] {$+2i$} (0,-1.5) circle[radius=2pt] node[left] {$-2i$};
+\draw (2.15,2.15) node[above right] {$C_R$} (0.3,0.3) node[right] {$C_{\epsilon}$};
+\end{tikzpicture}
+\end{figure}
+$C_R$ is a circle of radius $R$ and $C_{\epsilon}$ is a half-circle of radius $\epsilon$. Both of them are centered at $0$. As $R\to\infty$ and $\epsilon\to 0^+$, the integrals around $C_R$ and $C_\epsilon$ tend to $0$. So, we are only left with the integrals above and below the branch cut. 
+
+Let's calculate the residues at the poles $\pm 2i$. In doing so, one must be careful about the branch of the logarithm.
+
+\begin{align*}
+\mathop{\text{Res}}\limits_{z=2i} \; f(z)&= \lim_{z\to 2i} (z-2i) \frac{e^{i\log z}}{z^2+4} \\
+&= \frac{e^{i\log(2i)}}{4i} \\
+&= \frac{e^{i\ln 2- \arg (i)}}{4i}\\
+&= \frac{e^{i\ln 2 -\frac{\pi}{2}}}{4i}
+\end{align*}
+Similarly,
+\begin{align*}
+\mathop{\text{Res}}\limits_{z=-2i} \; f(z)=-\frac{e^{i\ln 2 -\arg(-i)}}{4i} =-\frac{e^{i\ln 2 +\frac{\pi}{2}}}{4i}
+\end{align*}
+Therefore, using the Residue Theorem,
+
+\begin{align*}
+\int_{-\infty}^0 \frac{e^{i(\ln|x|+i\pi)}}{4+x^2}dx +\int_0^{-\infty} \frac{e^{i(\ln|x|-i\pi)}}{4+x^2}dx &= 2\pi i \left(\mathop{\text{Res}}\limits_{z=2i} \; f(z) + \mathop{\text{Res}}\limits_{z=-2i} \; f(z)\right) \\
+\Rightarrow e^{-\pi}\int_0^\infty \frac{e^{i\ln x}}{4+x^2}dx - e^{\pi}\int_0^\infty \frac{e^{i\ln x}}{4+x^2}dx &= 2\pi i \left( \frac{e^{i\ln 2}}{4i}e^{-\frac{\pi}{2}}- \frac{e^{i\ln 2}}{4i}e^{\frac{\pi}{2}}\right) \\
+\Rightarrow -2\sinh(\pi) \int_0^\infty \frac{e^{i\ln x}}{4+x^2}dx  &= -\sinh\left(\frac{\pi}{2}\right) \pi e^{i\ln 2} \\
+\Rightarrow \int_0^\infty \frac{e^{i\ln x}}{4+x^2}dx &= \frac{\pi e^{i\ln 2}}{4\cosh\left(\frac{\pi}{2}\right)}
+\end{align*}
+Now, separate the imaginary parts to get the answer.
+\end{proof}
